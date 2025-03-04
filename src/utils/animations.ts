@@ -2,7 +2,7 @@
 // Utility functions for animations and transitions
 
 // Function for staggered animation of multiple elements
-export const staggerAnimation = (elements: HTMLElement[], delay = 100) => {
+export const staggerAnimation = (elements, delay = 100) => {
   elements.forEach((element, index) => {
     setTimeout(() => {
       element.classList.add('animate-fade-up');
@@ -12,7 +12,7 @@ export const staggerAnimation = (elements: HTMLElement[], delay = 100) => {
 };
 
 // Function for smooth scroll to element
-export const smoothScrollTo = (elementId: string) => {
+export const smoothScrollTo = (elementId) => {
   const element = document.getElementById(elementId);
   if (element) {
     element.scrollIntoView({ behavior: 'smooth' });
@@ -28,7 +28,7 @@ export const createScrollRevealObserver = (
     (entries) => {
       entries.forEach((entry) => {
         if (entry.isIntersecting) {
-          const target = entry.target as HTMLElement;
+          const target = entry.target;
           target.classList.add(animationClass);
           target.style.opacity = '1';
         }
@@ -40,10 +40,10 @@ export const createScrollRevealObserver = (
 
 // Typing animation for text
 export const typeText = (
-  element: HTMLElement, 
-  text: string, 
+  element, 
+  text, 
   speed = 50
-): Promise<void> => {
+) => {
   return new Promise((resolve) => {
     let i = 0;
     element.textContent = '';
