@@ -28,8 +28,9 @@ export const createScrollRevealObserver = (
     (entries) => {
       entries.forEach((entry) => {
         if (entry.isIntersecting) {
-          entry.target.classList.add(animationClass);
-          entry.target.style.opacity = '1';
+          const target = entry.target as HTMLElement;
+          target.classList.add(animationClass);
+          target.style.opacity = '1';
         }
       });
     },
